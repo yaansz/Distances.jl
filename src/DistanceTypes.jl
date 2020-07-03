@@ -71,10 +71,7 @@ function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v
         throw(DimensionMismatch("The dimensions of the vectors are different. Therefore, impossible to calculate!\n
         Vector1: $(length(v1)) // Vector2: $(length(v2))."))
     end
-
-    if length(v1) == 0 || length(v2) == 0
-        throw(DimensionMismatch("Can't calculate distance for empty arrays."))
-    end
+    
 
     return distanceFormulas[string(distanceType)](v1, v2)
 end
