@@ -68,8 +68,8 @@ distanceFormulas["SpanNormDist"] = temp_snd
 
 function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v2::AbstractArray{<: Number})
     if length(v1) != length(v2)
-        throw(DimensionMismatch("The first array has lenght $(lenght(v1)) and the second has $(lenght(v2)).\n
-        So it's impossible to calculate."))
+        throw(DimensionMismatch("The dimensions of the vectors are different. Therefore, impossible to calculate!\n
+        Vector1: $(length(v1)) // Vector2: $(length(v2))."))
     end
 
     if length(v1) == 0 || length(v2) == 0
