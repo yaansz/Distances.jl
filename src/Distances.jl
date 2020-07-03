@@ -7,5 +7,12 @@ export
     GetDistance,
 
     # Enum
-    DistanceType
+    DistanceType,
+    Euclidean,
+    Cityblock,
+    TotalVariation,
+    Chebyshev,
+    Jaccard,
+    BrayCurtis,
+    SpanNormDist
 end
