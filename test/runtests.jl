@@ -13,8 +13,6 @@ using Test
     @test GetDistance(SpanNormDist::DistanceType, [2,2], [2,4]) == 2
 end
 
-# I removed the test with empty vectors because the method recieve just
-
 @testset "Errors test" begin
     @test_throws DimensionMismatch GetDistance(Cityblock::DistanceType, [2, 2, 2], [2, 4])
     @test_throws DimensionMismatch GetDistance(Cityblock::DistanceType, [2], [2, 4])

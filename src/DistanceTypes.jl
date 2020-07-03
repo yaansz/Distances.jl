@@ -1,9 +1,17 @@
-#=
+"""
+This enum is used to select the distance calculation type.
+We converted the name into a string, and the magic happens! :D
 
-    This enum is used to select the distance calculation type.
-    We converted the name into a string, and the magic happen! :D
+DistanceType Possibilities:
 
-=#
+    Euclidean, Cityblock, TotalVariation, Chebyshev,
+    Jaccard, BrayCurtis, SpanNormDist
+
+# Examples:
+
+    Euclidean::DistanceType
+    Cityblock::DistanceType
+"""
 
 @enum DistanceType begin
 
@@ -57,22 +65,26 @@ distanceFormulas["BrayCurtis"] = temp_bc
 temp_snd(x, y) = maximum(x - y) - minimum(x - y)
 distanceFormulas["SpanNormDist"] = temp_snd
 
-#=
+"""
+    GetDistance(distanceType::DistanceType,
+    v1::AbstractArray{<: Number}, v2::AbstractArray{<: Number})
 
-    The "GetDistance" function is used to get every distance formula result
-    Parameters:
-    distanceType -> a enum "DistanceType" element.
-    v1 and v2 -> number arrays
+This function compute distance between two numeric vectors. You can use
+diferents distance calculations selecting with "DistanceType".
 
-=#
+# Examples:
+
+    GetDistance(Euclidean::DistanceType, [2,2], [2,4])
+    GetDistance(Cityblock::DistanceType, [2,2], [2,4])
+    GetDistance(TotalVariation::DistanceType, [2,2], [2,4])
+"""
 
 function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v2::AbstractArray{<: Number})
     if length(v1) != length(v2)
         throw(DimensionMismatch("The dimensions of the vectors are different. Therefore, impossible to calculate!\n
         Vector1: $(length(v1)) // Vector2: $(length(v2))."))
     end
-
-
+    
     return distanceFormulas[string(distanceType)](v1, v2)
 end
 
