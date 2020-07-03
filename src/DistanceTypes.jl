@@ -34,15 +34,15 @@ temp_euc(x, y) = sqrt(sum((x - y) .^ 2))
 distanceFormulas["Euclidean"] = temp_euc
 
 # Setting Cityblock
-temp_cb(x, y) = sum(abs(x - y))
+temp_cb(x, y) = sum(abs.(x - y))
 distanceFormulas["Cityblock"] = temp_cb
 
 # Setting TotalVariation
-temp_tv(x, y) = sum(abs(x - y)) / 2
+temp_tv(x, y) = sum(abs.(x - y)) / 2
 distanceFormulas["TotalVariation"] = temp_tv
 
 # Setting Chebyshev
-temp_chby(x, y) = max(abs(x - y))
+temp_chby(x, y) = maximum(abs.(x - y))
 distanceFormulas["Chebyshev"] = temp_chby
 
 # Setting Jaccard
@@ -50,11 +50,11 @@ temp_jcc(x, y) = 1 - sum(min(x, y)) / sum(max(x, y))
 distanceFormulas["Jaccard"] = temp_jcc
 
 # Setting BrayCurtis
-temp_bc(x, y) = sum(abs(x - y)) / sum(abs(x + y))
+temp_bc(x, y) = sum(abs.(x - y)) / sum(abs.(x + y))
 distanceFormulas["BrayCurtis"] = temp_bc
 
 # Setting SpanNormDist
-temp_snd(x, y) = max(x - y) - min(x - y)
+temp_snd(x, y) = maximum(x - y) - minimum(x - y)
 distanceFormulas["SpanNormDist"] = temp_snd
 
 #=
@@ -78,6 +78,3 @@ function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v
 
     return distanceFormulas[string(distanceType)](v1, v2)
 end
-
-#println(GetDistance(Euclidean::DistanceType, [1, 2], [2, 2]))
-println("Hello")
