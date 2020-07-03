@@ -71,7 +71,9 @@ function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v
         throw(DimensionMismatch("The dimensions of the vectors are different. Therefore, impossible to calculate!\n
         Vector1: $(length(v1)) // Vector2: $(length(v2))."))
     end
-    
+
 
     return distanceFormulas[string(distanceType)](v1, v2)
 end
+
+# Formulas from: https://github.com/JuliaStats/Distances.jl
