@@ -78,3 +78,6 @@ function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v
 
     return distanceFormulas[string(distanceType)](v1, v2)
 end
+
+#println(GetDistance(Euclidean::DistanceType, [1, 2], [2, 2]))
+println("Hello")
