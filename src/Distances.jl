@@ -1,5 +1,11 @@
 module Distances
 
-# Write your package code here.
+include("DistanceTypes.jl")
 
+export
+    # Function
+    GetDistance,
+
+    # Enum
+    DistanceType
 end
