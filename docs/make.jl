@@ -1,3 +1,4 @@
-using Documenter, Distances
+using Documenter
+using Distances
 
 makedocs(sitename="Distances.jl")
