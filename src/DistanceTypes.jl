@@ -12,7 +12,6 @@ DistanceType Possibilities:
     Euclidean::DistanceType
     Cityblock::DistanceType
 """
-
 @enum DistanceType begin
 
     Euclidean = 1
@@ -33,6 +32,7 @@ end
 
 =#
 
+#
 # Creating the dictionary
 
 distanceFormulas = Dict()
@@ -78,13 +78,12 @@ diferents distance calculations selecting with "DistanceType".
     GetDistance(Cityblock::DistanceType, [2,2], [2,4])
     GetDistance(TotalVariation::DistanceType, [2,2], [2,4])
 """
-
 function GetDistance(distanceType::DistanceType, v1::AbstractArray{<: Number}, v2::AbstractArray{<: Number})
     if length(v1) != length(v2)
         throw(DimensionMismatch("The dimensions of the vectors are different. Therefore, impossible to calculate!\n
         Vector1: $(length(v1)) // Vector2: $(length(v2))."))
     end
-    
+
     return distanceFormulas[string(distanceType)](v1, v2)
 end
 
