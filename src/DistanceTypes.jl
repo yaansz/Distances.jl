@@ -2,7 +2,7 @@
 This enum is used to select the distance calculation type.
 We converted the name into a string, and the magic happens! :D
 
-DistanceType Possibilities:
+# DistanceType Possibilities:
 
     Euclidean, Cityblock, TotalVariation, Chebyshev,
     Jaccard, BrayCurtis, SpanNormDist
@@ -32,7 +32,7 @@ end
 
 =#
 
-#
+#add
 # Creating the dictionary
 
 distanceFormulas = Dict()
